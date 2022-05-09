@@ -13,15 +13,9 @@
             "email": "it@noframework.io"
         }
     ],
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/terrazza/logger.git"
-        }
-    ],
     "require": {
         "php": ">=7.4",
-        "terrazza/logger": "1.0.*"
+        "terrazza/logger": "dev-main"
     },
     "autoload": {
         "psr-4": {

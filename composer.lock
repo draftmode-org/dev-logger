@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "08d11d7486364e9e4a9fc10b9899ce95",
+    "content-hash": "606c80ea62c3fbd5a88e91493ce6ae2c",
     "packages": [
         {
             "name": "psr/log",
@@ -58,11 +58,17 @@
         },
         {
             "name": "terrazza/logger",
-            "version": "1.0.0",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/terrazza/logger.git",
-                "reference": "0ed73aef26343d2bdb59e7a6ed4a6c3c6bc86c1c"
+                "reference": "0aa201948c78dd15814b2d94efd3d157c21bc6aa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/terrazza/logger/zipball/0aa201948c78dd15814b2d94efd3d157c21bc6aa",
+                "reference": "0aa201948c78dd15814b2d94efd3d157c21bc6aa",
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.4",
@@ -71,17 +77,15 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.3"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Terrazza\\Component\\Logger\\": "src"
+                    "Terrazza\\Component\\Logger\\": "src",
+                    "Terrazza\\Component\\Logger\\Utility\\": "utility"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Terrazza\\Component\\Logger\\Tests\\_Mocks\\": "tests/_Mocks"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -92,13 +96,19 @@
                 }
             ],
             "description": "logger",
-            "time": "2021-12-17T16:01:11+00:00"
+            "support": {
+                "issues": "https://github.com/terrazza/logger/issues",
+                "source": "https://github.com/terrazza/logger/tree/main"
+            },
+            "time": "2022-05-09T21:03:17+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "terrazza/logger": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
