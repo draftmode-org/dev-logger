@@ -1,6 +1,7 @@
 <?php
 namespace Terrazza\Dev\Logger;
 
+use Terrazza\Component\Logger\Channel\Channel;
 use Terrazza\Component\Logger\Converter\FormattedRecord\FormattedRecordFlatConverter;
 use Terrazza\Component\Logger\Converter\NonScalar\NonScalarJsonConverter;
 use Terrazza\Component\Logger\Formatter\LogRecordFormatter;
@@ -30,12 +31,15 @@ class Logger {
             $formatter                              = new LogRecordFormatter(new NonScalarJsonConverter(), $format);
             $formatter->pushConverter("Date", new LogRecordValueDateConverter());
             $formatter->pushConverter("Content.exception", new LogRecordValueExceptionConverter());
-            $channel                                = new ChannelHandler($this->name-".channel",
-                new LogStreamFileWriter(new FormattedRecordFlatConverter(" "), $stream, FILE_APPEND),
+            $writer                                 = new LogStreamFileWriter(new FormattedRecordFlatConverter(" "), $stream, FILE_APPEND);
+            $channel                                = new Channel(
+                $this->name.".channel",
+                $writer,
                 $formatter
             );
-            $channel->pushLogHandler(new LogHandler(rLogger::DEBUG));
-            return $logger->registerChannelHandler($channel);
+            @file_put_contents($stream, PHP_EOL);
+            $channelHandler                           = new ChannelHandler($channel, new LogHandler(rLogger::DEBUG));
+            return $logger->registerChannelHandler($channelHandler);
         } elseif ($stream === false) {
             return $logger;
         } else {
